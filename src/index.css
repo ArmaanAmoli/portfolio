@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------ */
+/* Lost in the red static — design tokens                               */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  --color-void: #050309;
+  --color-haze: #161a38;
+  --color-dusk: #3b1646;
+  --color-wine: #5c0d31;
+  --color-crimson: #c01245;
+  --color-hot: #ff1f5a;
+  --color-star: #f6e2e8;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+}
+
+/* shadcn-compatible variables (dark only) */
+:root {
+  --background: #050309;
+  --foreground: #f6e2e8;
+  --card: #050309;
+  --card-foreground: #f6e2e8;
+  --popover: #0b0714;
+  --popover-foreground: #f6e2e8;
+  --primary: #ff1f5a;
+  --primary-foreground: #050309;
+  --secondary: #161a38;
+  --secondary-foreground: #f6e2e8;
+  --muted: #161a38;
+  --muted-foreground: rgba(246, 226, 232, 0.6);
+  --accent: #3b1646;
+  --accent-foreground: #f6e2e8;
+  --destructive: #c01245;
+  --border: rgba(255, 31, 90, 0.3);
+  --input: rgba(255, 31, 90, 0.3);
+  --ring: #ff1f5a;
+  --radius: 0px;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    background-color: var(--background);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(255, 31, 90, 0.28);
+    color: #f6e2e8;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050309;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 31, 90, 0.35);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 31, 90, 0.6);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                            */
+/* ------------------------------------------------------------------ */
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+@utility label-mono-sm {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Subtle halftone dot texture below the hero (pure CSS, no WebGL). */
+@utility dot-texture {
+  background-image: radial-gradient(rgba(246, 226, 232, 0.055) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* CSS fallback shown when WebGL2 is unavailable. */
+@utility nebula-fallback {
+  background-image:
+    radial-gradient(60% 45% at 22% 78%, rgba(255, 31, 90, 0.5) 0%, transparent 70%),
+    radial-gradient(45% 40% at 70% 18%, rgba(192, 18, 69, 0.45) 0%, transparent 72%),
+    radial-gradient(70% 60% at 50% 60%, rgba(59, 22, 70, 0.75) 0%, transparent 75%),
+    linear-gradient(180deg, #050309 0%, #161a38 55%, #3b1646 100%);
+}
+
+/* Click-to-add sparkle on the nebula. */
+.nebula-sparkle {
+  position: absolute;
+  z-index: 1;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #ff1f5a;
+  box-shadow: 0 0 12px rgba(255, 31, 90, 0.9);
+  pointer-events: none;
+  animation: nebula-sparkle-fade 1400ms ease-out forwards;
+}
+
+@keyframes nebula-sparkle-fade {
+  0% {
+    opacity: 1;
+    transform: scale(0.6);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+
+/* Scroll reveal (CSS transitions only). */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 80ms;
+}
+
+.reveal-delay-2 {
+  transition-delay: 160ms;
+}
+
+.reveal-delay-3 {
+  transition-delay: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
