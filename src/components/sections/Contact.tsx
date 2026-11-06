@@ -19,7 +19,7 @@ export function Contact() {
           <div className='flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between'>
             <div className='max-w-2xl'>
               <div className='flex items-center gap-3'>
-                <span className='label-mono text-hot'>06</span>
+                <span className='label-accent text-hot'>06</span>
                 <span aria-hidden='true' className='h-px w-8 bg-hot/40' />
                 <span className='label-mono text-star'>contact</span>
               </div>

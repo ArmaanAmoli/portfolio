@@ -85,7 +85,7 @@ export const portfolio: Portfolio = {
   links: {
     email: 'armaanmohanamoli@gmail.com',
     github: 'https://github.com/ArmaanAmoli',
-    linkedin: 'https://www.linkedin.com/in/armaan-amoli-97132b300/',
+    linkedin: 'https://linkedin.com/in/armaan-amoli',
   },
 
   about: {
@@ -215,7 +215,7 @@ export const portfolio: Portfolio = {
       count: '400+',
       label: 'problems solved',
       // TODO: verify username
-      href: 'https://leetcode.com/u/Tiku_Badmash',
+      href: 'https://leetcode.com/u/Tiku%20Badmash',
     },
     {
       platform: 'Codeforces',

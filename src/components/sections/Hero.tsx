@@ -31,7 +31,7 @@ export function Hero() {
               className='pointer-events-none absolute -inset-x-6 -inset-y-8 -z-10 bg-gradient-to-t from-[#050309]/70 to-transparent'
             />
 
-            <p className='label-mono text-hot'>{portfolio.identity.heroLabel}</p>
+            <p className='label-accent text-hot'>{portfolio.identity.heroLabel}</p>
 
             <h1 className='mt-4 text-5xl leading-[0.95] font-semibold tracking-tight text-star sm:text-7xl lg:text-8xl'>
               {portfolio.identity.name}

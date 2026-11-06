@@ -23,7 +23,7 @@ export function Skills() {
           {portfolio.skills.map((group, index) => (
             <Reveal key={group.title} delay={(index % 3) as 0 | 1 | 2 | 3}>
               <div className='h-full bg-void p-6 transition-colors duration-300 hover:bg-haze/40'>
-                <h3 className='label-mono text-hot'>{group.title}</h3>
+                <h3 className='label-accent text-hot'>{group.title}</h3>
                 <ul className='mt-5 flex flex-wrap gap-2'>
                   {group.skills.map((skill) => (
                     <li

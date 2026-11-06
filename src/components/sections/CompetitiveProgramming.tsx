@@ -30,7 +30,7 @@ export function CompetitiveProgramming() {
                 rel='noreferrer noopener'
                 className='group flex h-full flex-col gap-3 bg-void p-8 transition-colors duration-300 hover:bg-haze/40 sm:p-10'
               >
-                <span className='label-mono text-hot'>{profile.platform}</span>
+                <span className='label-accent text-hot'>{profile.platform}</span>
                 <span className='text-5xl font-semibold tracking-tight text-star sm:text-6xl'>
                   {profile.count}
                 </span>

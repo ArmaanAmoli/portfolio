@@ -121,6 +121,17 @@
   text-transform: uppercase;
 }
 
+/* Bolder accent label for red/hot text (section numbers, group titles,
+   status keys, results) so it stays readable at small sizes. */
+@utility label-accent {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 /* Subtle halftone dot texture below the hero (pure CSS, no WebGL). */
 @utility dot-texture {
   background-image: radial-gradient(rgba(246, 226, 232, 0.055) 1px, transparent 1px);
@@ -136,31 +147,56 @@
     linear-gradient(180deg, #050309 0%, #161a38 55%, #3b1646 100%);
 }
 
-/* Click-to-add sparkle on the nebula. */
+/* Click-to-add sparkle on the nebula: a 4-point star that twinkles like the
+   shader stars before fading out. clip-path shapes the element itself, and
+   drop-shadow (applied after clipping) keeps the glow. */
 .nebula-sparkle {
   position: absolute;
   z-index: 1;
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
   background: #ff1f5a;
-  box-shadow: 0 0 12px rgba(255, 31, 90, 0.9);
+  clip-path: polygon(
+    50% 0%,
+    61% 39%,
+    100% 50%,
+    61% 61%,
+    50% 100%,
+    39% 61%,
+    0% 50%,
+    39% 39%
+  );
+  filter: drop-shadow(0 0 10px rgba(255, 31, 90, 0.95))
+    drop-shadow(0 0 22px rgba(192, 18, 69, 0.6));
   pointer-events: none;
-  animation: nebula-sparkle-fade 1400ms ease-out forwards;
+  animation: nebula-sparkle-twinkle 1200ms ease-out forwards;
 }
 
-@keyframes nebula-sparkle-fade {
+@keyframes nebula-sparkle-twinkle {
   0% {
     opacity: 1;
-    transform: scale(0.6);
+    transform: scale(0.4) rotate(0deg);
   }
-  35% {
+  18% {
+    opacity: 0.25;
+    transform: scale(1.25) rotate(20deg);
+  }
+  36% {
     opacity: 1;
-    transform: scale(1.6);
+    transform: scale(0.65) rotate(45deg);
+  }
+  54% {
+    opacity: 0.3;
+    transform: scale(1.45) rotate(70deg);
+  }
+  72% {
+    opacity: 0.95;
+    transform: scale(0.8) rotate(90deg);
   }
   100% {
     opacity: 0;
-    transform: scale(0.2);
+    transform: scale(0.2) rotate(90deg);
   }
 }
 

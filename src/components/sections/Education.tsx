@@ -39,7 +39,7 @@ export function Education() {
                     {entry.detail ? ` · ${entry.detail}` : ''}
                   </p>
                   <p className='text-sm text-star/45'>{entry.location}</p>
-                  <p className='label-mono mt-2 text-hot'>{entry.result}</p>
+                  <p className='label-accent mt-2 text-hot'>{entry.result}</p>
                 </div>
               </Reveal>
             </li>

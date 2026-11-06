@@ -19,19 +19,21 @@ function TerminalMock() {
       </div>
       <div className='space-y-1.5 px-4 py-4 text-star/70'>
         <p>
-          <span className='text-hot'>$</span> babypanda
+          <span className='font-semibold text-hot'>$</span> babypanda
         </p>
         <p className='text-star/45'>
-          <span className='text-hot'>›</span> streaming session · thoughts, answers, tool calls
+          <span className='font-semibold text-hot'>›</span> streaming session · thoughts, answers,
+          tool calls
         </p>
         <p className='text-star/45'>
-          <span className='text-hot'>›</span> mcp tools · filesystem · shell · web search
+          <span className='font-semibold text-hot'>›</span> mcp tools · filesystem · shell · web
+          search
         </p>
         <p className='text-star/45'>
-          <span className='text-hot'>›</span> memory · project notes persisted
+          <span className='font-semibold text-hot'>›</span> memory · project notes persisted
         </p>
         <p>
-          <span className='text-hot'>$</span>{' '}
+          <span className='font-semibold text-hot'>$</span>{' '}
           <span className='inline-block h-3 w-1.5 bg-hot/70 align-middle' />
         </p>
       </div>
@@ -53,7 +55,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     >
       <div className='flex flex-wrap items-center gap-3'>
         {featured ? (
-          <span className='label-mono border border-hot/60 bg-hot/10 px-3 py-1 text-hot'>
+          <span className='border border-hot/60 bg-hot/10 px-3.5 py-1.5 font-mono text-[0.75rem] font-semibold uppercase tracking-[0.2em] text-hot'>
             featured
           </span>
         ) : null}
@@ -83,7 +85,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               type='button'
               onClick={() => setExpanded((open) => !open)}
               aria-expanded={expanded}
-              className='label-mono mt-5 inline-flex items-center gap-2 text-hot transition-colors hover:text-star'
+              className='label-accent mt-5 inline-flex items-center gap-2 text-hot transition-colors hover:text-star'
             >
               {expanded ? 'Fewer details' : 'More details'}
               <ChevronDown

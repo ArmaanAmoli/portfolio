@@ -36,7 +36,7 @@ export function About() {
                   key={row.key}
                   className='flex flex-col gap-1 border-b border-hot/15 px-5 py-4 last:border-b-0 sm:flex-row sm:items-baseline sm:gap-6'
                 >
-                  <dt className='label-mono w-32 shrink-0 text-hot/80'>{row.key}</dt>
+                  <dt className='label-accent w-32 shrink-0 text-hot'>{row.key}</dt>
                   <dd className='text-sm text-star/85'>{row.value}</dd>
                 </div>
               ))}

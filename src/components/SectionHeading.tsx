@@ -1,4 +1,4 @@
-import { cn } from 'cn'
+import { cn } from '@/lib/utils'
 
 interface SectionHeadingProps {
   /** Two-digit section number, e.g. "01". */
@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div className={cn('flex flex-col gap-4', className)}>
       <div className='flex items-center gap-3'>
-        <span className='label-mono text-hot'>{number}</span>
+        <span className='label-accent text-hot'>{number}</span>
         <span aria-hidden='true' className='h-px w-8 bg-hot/40' />
         <h2 id={id} className='label-mono text-star'>
           {label}
